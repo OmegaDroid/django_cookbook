@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 
