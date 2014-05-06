@@ -22,7 +22,8 @@ def get_authenticated_users(include=[], exclude=[]):
     #find all the users
     if include:
         return User.objects.filter(
-            id__in=uid_list,
+            id__in=uid_list
+        ).filter(
             id__in=[u.id for u in include],
         ).exclude(
             id__in=[u.id for u in exclude]
