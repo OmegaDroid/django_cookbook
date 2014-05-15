@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='django_cookbook',
     version='0.0.1',
-    packages=['django_cookbook', 'django_cookbook.templatetags'],
+    packages=['django_cookbook', 'django_cookbook.templatetags', 'django_cookbook.model'],
     url='',
     license='',
     author='',

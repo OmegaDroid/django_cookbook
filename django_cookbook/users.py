@@ -5,11 +5,15 @@ from django.contrib.sessions.models import Session
 
 def get_authenticated_users(include=[], exclude=[]):
     """
-    Gets a lit of all the authenticated user who are in the include list and not in the exclude list
+    Gets a lit of all the authenticated user who are in the include list and not in the exclude list.
+    For example, assuming your user profile has a "friends" property to get all authenticated friends you would use:
 
-    :param include:
-    :param exclude:
-    :return:
+    >>> get_authenticated_users(include=user.friends, exclude=[user])
+
+    :param include: A list of users to include, if False no include filter is applied
+    :param exclude: A list of users to exclude
+
+    :return: A query set containing all authenticate uses in
     """
     # get the ids of the authenticated sessions
     sessions = Session.objects.filter(expire_date__gte=datetime.now())
