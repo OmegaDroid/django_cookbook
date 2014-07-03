@@ -1,15 +1,7 @@
 import json
+
 from django.core.exceptions import ValidationError
 from django.db.models import TextField
-import re
-
-
-def is_iterable(obj):
-    try:
-        iter(obj)
-        return True
-    except TypeError:
-        return False
 
 
 class IterField(TextField):
@@ -18,8 +10,6 @@ class IterField(TextField):
     field must be serializable by the "json" module. This includes dict, list, tuple, str, int, float, True, False and
     None
     """
-
-    LIST_RE = re.compile(r"\[(.*)\]")
 
     def to_python(self, value):
         if isinstance(value, list):
