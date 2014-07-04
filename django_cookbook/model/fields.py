@@ -13,7 +13,7 @@ class IterField(with_metaclass(SubfieldBase, TextField)):
     """
 
     def to_python(self, value):
-        if isinstance(value, list) or value is None:
+        if isinstance(value, list) or isinstance(value, dict) or value is None:
             return value
 
         if not isinstance(value, str):

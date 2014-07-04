@@ -16,6 +16,16 @@ class IterField_ToPython(TestCase):
 
         self.assertEqual([], field.to_python(""))
 
+    def test_ValueIsList_ListIsReturned(self):
+        field = IterField()
+
+        self.assertEqual([1, 2, {3: 4}], field.to_python([1, 2, {3: 4}]))
+
+    def test_ValueIsDictionary_DictionaryIsReturned(self):
+        field = IterField()
+
+        self.assertEqual({1: 2, 3: [4, 5, 6]}, field.to_python({1: 2, 3: [4, 5, 6]}))
+
     def test_StringIsEmptyList_ReturnedValueIsEmptyList(self):
         field = IterField()
 
