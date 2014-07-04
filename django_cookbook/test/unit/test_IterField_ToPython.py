@@ -6,6 +6,11 @@ from django_cookbook.model.fields import IterField
 
 
 class IterField_ToPython(TestCase):
+    def test_ValueIsNone_ReturnedValueIsNone(self):
+        field = IterField()
+
+        self.assertIsNone(field.to_python(None))
+
     def test_StringIsEmpty_ReturnedValueIsEmptyList(self):
         field = IterField()
 

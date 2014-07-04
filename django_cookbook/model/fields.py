@@ -1,10 +1,11 @@
 import json
 
 from django.core.exceptions import ValidationError
-from django.db.models import TextField
+from django.db.models import TextField, SubfieldBase
+from six import with_metaclass
 
 
-class IterField(TextField):
+class IterField(with_metaclass(SubfieldBase, TextField)):
     """
     Stores the an iterable object in the the database. The data is stored as JSON and so all the values given to the
     field must be serializable by the "json" module. This includes dict, list, tuple, str, int, float, True, False and
@@ -12,7 +13,7 @@ class IterField(TextField):
     """
 
     def to_python(self, value):
-        if isinstance(value, list):
+        if isinstance(value, list) or value is None:
             return value
 
         if not isinstance(value, str):
