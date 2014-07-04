@@ -1,3 +1,6 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_cookbook.test.settings")
+
 from django.test import TestCase
 from django_cookbook.model.fields import IterField
 
